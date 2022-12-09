@@ -2,10 +2,8 @@
 
 include("connection.php");
 
-if(isset($_POST["post_id"]) && $_POST["post_id"] != "" && isset($_POST["user_id"]) && $_POST["user_id"] != "" ){
+if(isset($_GET["post_id"]) ){
     $post_id = $_GET["post_id"];
-    $user_id = $_GET["user_id"];
-
 }else{
     $response = [];
     $response["success"] = false;   
@@ -14,15 +12,18 @@ if(isset($_POST["post_id"]) && $_POST["post_id"] != "" && isset($_POST["user_id"
 }
 
 
-$query = $mysqli->prepare("SELECT is_liked FROM likes WHERE post_id = ? && user_id = ?");
-$query->bind_param("ii", $post_id, $user_id);
+$query = $mysqli->prepare("SELECT user_id FROM likes WHERE post_id = ? && is_liked = 1");
+$query->bind_param("i", $post_id);
 $query->execute();
 
+$response = [];
 $array = $query->get_result();
-if(!$array[0]){
-    $response["success"] = "not_liked";   
+$like_count  =0;
+while($Likes = $array->fetch_assoc()){
+    $like_count = $like_count + 1;
 }
-else{
-    $response["success"] = "is_liked";   
-}
-echo json_encode($response);
+
+
+$response["success"] = true;
+
+echo json_encode($like_count);
