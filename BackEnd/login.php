@@ -2,17 +2,17 @@
 
 include("connection.php");
 
-if(isset($_POST["User_id"]) && $_POST["User_id"] != "" && isset($_POST["Image_URL"]) && $_POST["Image_URL"] != "" ){
-    $User_id = $_POST["User_id"];
-    $Image_URL = $_POST["Image_URL"];
+if(isset($_POST["user_id"]) && $_POST["user_id"] != "" && isset($_POST["image_URL"]) && $_POST["image_URL"] != "" ){
+    $user_id = $_POST["user_id"];
+    $image_URL = $_POST["image_URL"];
 
 }else{
      falseResponse();
      return; 
  }
 
-$query = $mysqli->prepare("INSERT INTO Images(Image_URL, User_id) VALUES(?, ?)");
-$query->bind_param("si",$Image_URL, $User_id);
+$query = $mysqli->prepare("INSERT INTO Images(image_URL, user_id) VALUES(?, ?)");
+$query->bind_param("si",$image_URL, $user_id);
 $query->execute();
 
 $response = [];
