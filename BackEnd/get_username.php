@@ -11,7 +11,7 @@ if(isset($_GET["user_id"]) ){
     return;  
 }
 
-$query = $mysqli->prepare("SELECT Username FROM users WHERE user_id = ?");
+$query = $mysqli->prepare("SELECT username FROM users WHERE user_id = ?");
 $query->bind_param("i", $user_id);
 $query->execute();
 
