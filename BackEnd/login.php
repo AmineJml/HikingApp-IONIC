@@ -2,34 +2,22 @@
 
 include("connection.php");
 
-if(isset($_POST["Username"]) && $_POST["Username"] != "" && isset($_POST["Password"]) && $_POST["Password"] != ""  ){
-    $Username = $_POST["Username"];
-    $Password = $_POST["Password"];
+if(isset($_POST["User_id"]) && $_POST["User_id"] != "" && isset($_POST["Image_URL"]) && $_POST["Image_URL"] != "" ){
+    $User_id = $_POST["User_id"];
+    $Image_URL = $_POST["Image_URL"];
+
 }else{
-     $response = [];
-     $response["success"] = "false";   
-     echo json_encode($response);
+     falseResponse();
      return; 
  }
 
-$query = $mysqli->prepare("Select * from users WHERE Username = ? && Password=?");
-$query->bind_param("ss", $Username, $Password);
+$query = $mysqli->prepare("INSERT INTO Images(Image_URL, User_id) VALUES(?, ?)");
+$query->bind_param("si",$Image_URL, $User_id);
 $query->execute();
 
-$array = $query->get_result();
 $response = [];
-while($credentials = $array->fetch_assoc()){
-    $response[] = $credentials;
-}
-
-if(!$response ){ //list is empty
-    $response["success"] = "user_does_not_exit";   
-}
-
-else{
-  
-    $response["success"] = "true";   
-
-}
+$response["success"] = "true";
 echo json_encode($response);
+
+
 
