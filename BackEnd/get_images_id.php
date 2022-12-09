@@ -1,7 +1,4 @@
 <?php 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST');
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
 
 include("connection.php");
 
@@ -14,18 +11,18 @@ if(isset($_GET["user_id"]) ){
     return;  
 }
 
-$query = $mysqli->prepare("SELECT Image_URL FROM images WHERE user_id = ?");
+$query = $mysqli->prepare("SELECT image_URL, description, user_id FROM posts WHERE user_id = ?");
 $query->bind_param("i", $user_id);
 $query->execute();
 
 $array = $query->get_result();
 $response = [];
-while($tweets = $array->fetch_assoc()){
-    $response[] = $tweets;
+while($posts = $array->fetch_assoc()){
+    $response[] = $posts;
 }
 
 if(!$response ){ //list is empty
-    $response["success"] = "no_tweets_by_this_user";   
+    $response["success"] = "no_posts_by_this_user";   
 }
 
 echo json_encode($response);
