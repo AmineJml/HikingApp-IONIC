@@ -4,14 +4,14 @@ header('Access-Control-Allow-Methods: GET, POST');
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
 
 include("connection.php");
-//Username can be changed
-//FName, LName, password
-if(isset($_POST["User_id"]) && $_POST["User_id"] != "" && isset($_POST["Username"]) && $_POST["Username"] != "" && isset($_POST["FName"]) && $_POST["FName"] != "" && isset($_POST["LName"]) && $_POST["LName"] != "" && isset($_POST["Password"]) && $_POST["Password"] != ""  ){
-    $User_id = $_POST["User_id"];
-    $Username = $_POST["Username"];
-    $FName = $_POST["FName"];
-    $LName = $_POST["LName"];
-    $Password = $_POST["Password"];
+//username can be changed
+//fname, lname, password
+if(isset($_POST["user_id"]) && $_POST["user_id"] != "" && isset($_POST[""]) && $_POST["username"] != "" && isset($_POST["fname"]) && $_POST["fname"] != "" && isset($_POST["lname"]) && $_POST["lname"] != "" && isset($_POST["password"]) && $_POST["password"] != ""  ){
+    $user_id = $_POST["user_id"];
+    $username = $_POST["username"];
+    $fname = $_POST["fname"];
+    $lname = $_POST["lname"];
+    $password = $_POST["password"];
 }
 else{
     $response = [];
@@ -21,8 +21,8 @@ else{
 }
 
 
-$query = $mysqli->prepare("Select * from users WHERE Username = ?");
-$query->bind_param("s", $Username);
+$query = $mysqli->prepare("Select * from users WHERE username = ?");
+$query->bind_param("s", $username);
 $query->execute();
 
 $array = $query->get_result();
@@ -40,8 +40,8 @@ if($users){ //if list is not empty
 }
 
 else{
-    $query = $mysqli->prepare("UPDATE users SET Username=?, FName=? , LName=?, Password=? WHERE User_id=?");
-    $query->bind_param("ssssi", $Username, $FName, $LName, $Password, $User_id);
+    $query = $mysqli->prepare("UPDATE users SET username=?, fname=? , lname=?, password=? WHERE user_id=?");
+    $query->bind_param("ssssi", $username, $fname, $lname, $password, $user_id);
     $query->execute();
     $response = [];
     $response["success"] = true;
