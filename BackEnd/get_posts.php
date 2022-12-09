@@ -2,8 +2,7 @@
 
 include("connection.php");
 
-$query = $mysqli->prepare("Select image_URL from images WHERE User_id NOT IN (?) ");
-$query->bind_param("s", $str );
+$query = $mysqli->prepare("Select image_URL, description, user_id from posts  ");
 $query->execute();
     //select all users normally
 $array = $query->get_result();
