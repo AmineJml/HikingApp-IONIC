@@ -1,9 +1,38 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>addPost</ion-title>
+    <ion-title>
+      New post
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-card class="card">
+
+    <ion-card-header>
+      <ion-card-title>Username of the logged in user</ion-card-title>
+    </ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Title</ion-label>
+        <ion-input placeholder="Enter text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Image online Url</ion-label>
+        <ion-input type="text" placeholder="Please insert a valid link"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Google maps location</ion-label>
+        <ion-input placeholder="Optional"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-textarea placeholder="Type something here" [autoGrow]="true"></ion-textarea>
+      </ion-item>
+    </ion-list></ion-card>
 
 </ion-content>
