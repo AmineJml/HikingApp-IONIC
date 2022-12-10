@@ -13,7 +13,8 @@ import { AddPostPage } from './add-post.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddPostPageRoutingModule
+    AddPostPageRoutingModule,
+
   ],
   declarations: [AddPostPage]
 })
