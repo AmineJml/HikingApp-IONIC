@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';  
 
 @Component({
   selector: 'app-edit-profile',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditProfilePage implements OnInit {
 
-  constructor() { }
+    constructor(private router: Router) {}  
+    goTab1() {  
+        this.router.navigate(['tabs/tab1']);
+    }
+    goTab2() {  
+        this.router.navigate(['tabs/tab2']);
+    }
 
-  ngOnInit() {
-  }
+    goTab3() {  
+        this.router.navigate(['tabs/tab3']);
+    }
+  
+   ngOnInit() {
+   }
+
 
 }
