@@ -1,4 +1,5 @@
 <?php 
+
 include("connection.php");
 
 if(isset($_GET["post_id"]) ){

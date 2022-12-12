@@ -21,10 +21,16 @@ export class Tab1Page {
     go() {
     this.router.navigate(['add-post']);
   }
+  goPostView(){
+    this.router.navigate(['post-view']);
+
+  }
   ngOnInit() { //on start (same as onCreate)
     this.apiService.get_comments().subscribe((response: any) => {
-      this.commentTest = response.comment;
-      console.log("AAAAAAAA" + this.commentTest);
+
+      this.commentTest = response[0].comment;
+      console.log(this.commentTest);
+
   });
 
   }

@@ -9,11 +9,5 @@ $mysqli = new mysqli($host, $db_user, $db_pass, $db_name);
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST');
-header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
 
-function falseResponse(){
-    $response = [];
-    $response["success"] = "false";   
-    echo json_encode($response);
-    return; 
-}

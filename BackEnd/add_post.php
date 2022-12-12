@@ -8,9 +8,12 @@ if(isset($_POST["user_id"]) && $_POST["user_id"] != "" && isset($_POST["image_UR
     $description = $_POST["description"];
 
 }else{
-     falseResponse();
-     return; 
- }
+    $response = [];
+    $response["success"] = false;   
+    echo json_encode($response);
+    return;  
+}
+
 
 $query = $mysqli->prepare("INSERT INTO Images(image_URL, user_id, description) VALUES(?, ?, ?)");
 $query->bind_param("sis",$image_URL, $user_id, $description);

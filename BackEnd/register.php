@@ -8,9 +8,12 @@ if(isset($_POST["fname"]) && $_POST["fname"] != "" && isset($_POST["lname"]) && 
     $username = $_POST["username"];
     $password = $_POST["password"];
 }else{
-    falseResponse();
-    return;
+    $response = [];
+    $response["success"] = false;   
+    echo json_encode($response);
+    return;  
 }
+
 
 $query = $mysqli->prepare("Select * from users WHERE username = ?");
 $query->bind_param("s", $username);
