@@ -14,4 +14,9 @@ export class Tab2Page {
       this.router.navigate(['edit-profile']);
   }
 
+    gologin() {  
+        this.router.navigate(['login']);
+    }
+  
+
 }

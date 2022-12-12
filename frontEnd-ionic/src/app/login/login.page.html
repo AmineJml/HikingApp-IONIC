@@ -1,9 +1,32 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>
+      Login
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-card class="card">
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="stacked">email</ion-label>
+        <ion-input type="text" placeholder="Enter email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="email" placeholder="Eneter password"></ion-input>
+      </ion-item>
+
+      <ion-button class="button-login" (click)="  goTab1()">Login</ion-button>
+      <ion-item>
+        <p class="text">If youd dont have an account please <ion-button fill="clear" (click)="goRegister()">Sign
+            up</ion-button></p>
+      </ion-item>
+    </ion-list>
+
+  </ion-card>
 </ion-content>
