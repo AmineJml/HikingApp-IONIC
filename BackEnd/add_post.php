@@ -2,11 +2,14 @@
 
 include("connection.php");
 
-if(isset($_POST["user_id"]) && $_POST["user_id"] != "" && isset($_POST["image_URL"]) && $_POST["image_URL"] != ""  && isset($_POST["description"]) && $_POST["description"] != "" ){
-    $user_id = $_POST["user_id"];
-    $image_URL = $_POST["image_URL"];
-    $description = $_POST["description"];
+$data = json_decode(file_get_contents('php://input', true));
 
+if($data->user_id && $data->image_URL  && $data->description  ){
+    $user_id = $data->user_id;
+    $image_URL = $data->image_URL;
+    $description = $data->description;
+
+    
 }else{
     $response = [];
     $response["success"] = false;   
