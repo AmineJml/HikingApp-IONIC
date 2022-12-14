@@ -11,7 +11,12 @@ export class LoginPage implements OnInit {
   commentTest='';
 
   constructor(private apiService:ApisService, private router:Router) {}
-    goTab1() {  
+    login() {  
+      this.apiService.login("test1", "test1").subscribe((response: any) => {
+      this.commentTest = response;
+      console.log(this.commentTest);
+     });
+
         this.router.navigate(['tabs/tab1']);
     }
 
@@ -19,12 +24,7 @@ export class LoginPage implements OnInit {
           this.router.navigate(['/register']);
       }
   ngOnInit() {
-    this.apiService.login("test1", "test1").subscribe((response: any) => {
-
-      this.commentTest = response;
-      console.log(this.commentTest);
-
-   });  
+  
   }
 
 }
