@@ -34,8 +34,6 @@ export class LoginPage implements OnInit {
             localStorage.setItem('username', response[0].username);
 
             console.log(localStorage.getItem('username'))   
-
-            // this.storage.set('username', this.username)
             this.router.navigate(['tabs/tab1']);
           }
           else{
