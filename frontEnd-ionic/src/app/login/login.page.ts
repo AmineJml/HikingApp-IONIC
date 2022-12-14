@@ -28,8 +28,11 @@ export class LoginPage implements OnInit {
         
         this.apiService.login(this.username, this.password).subscribe((response: any) => {
           if(response.success == "true"){
+            localStorage.setItem('user_id', response[0].user_id);
+            console.log(localStorage.getItem('user_id'))   
+
             // this.storage.set('username', this.username)
-            this.router.navigate(['tabs/tab1']);
+           // this.router.navigate(['tabs/tab1']);
           }
           else{
             this.check_fields = "Username or password is incorrect"

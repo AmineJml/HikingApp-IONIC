@@ -26,22 +26,22 @@ export class RegisterPage implements OnInit {
       }
 
       if(this.password != this.passwordConf){
-        this.register_status = "Password and password conf do not match";
+        this.register_status = "Password and password confirmation do not match";
       }
+      //===============HERE===========================
       else{
         
         this.apiService.createAcc(this.username, this.password, this.fname, this.lname).subscribe((response: any) => {
-          console.log(response)
+          console.log(response.success)
 
-          if(response.success == "user_already_exit"){
+          if(response.success != "user_already_exit"){
+            this.register_status = "Account created";
             // this.storage.set('username', this.username)
-            this.register_status = "User already exist";
           }
-          else{
-            this.router.navigate(['login']);
+          this.register_status = "User already exist";
 
-          }
         });
+
       }
     }
     ngOnInit() {
