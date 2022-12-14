@@ -26,6 +26,8 @@ export class Tab1Page {
 
   }
   ngOnInit() { //on start (same as onCreate)
+    console.log(localStorage.getItem('username'))   
+
     this.apiService.get_comments().subscribe((response: any) => {
 
       this.commentTest = response[0].comment;
