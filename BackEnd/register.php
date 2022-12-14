@@ -1,12 +1,13 @@
 <?php
 
 include("connection.php");
+$data = json_decode(file_get_contents('php://input', true));
 
-if(isset($_POST["fname"]) && $_POST["fname"] != "" && isset($_POST["lname"]) && $_POST["lname"] != "" && isset($_POST["username"]) && $_POST["username"] != ""&& isset($_POST["password"]) && $_POST["password"] != "" ){
-    $fname = $_POST["fname"];
-    $lname = $_POST["lname"];
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+if($data->user_id && $data->username  && $data->fname  && $data->lname  && $data->password  ){
+    $username = $data->username;
+    $fname = $data->fname;
+    $lname = $data->lname;
+    $password = $data->password;
 }else{
     $response = [];
     $response["success"] = false;   
