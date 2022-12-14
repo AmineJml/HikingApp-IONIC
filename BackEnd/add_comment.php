@@ -1,12 +1,12 @@
 <?php
 
 include("connection.php");
+$data = json_decode(file_get_contents('php://input', true));
 
-if(isset($_POST["user_id"]) && $_POST["user_id"] != "" && isset($_POST["post_id"]) && $_POST["post_id"] != "" && isset($_POST["comment"]) && $_POST["comment"] != ""){
-    $user_id = $_POST["user_id"];
-    $post_id = $_POST["post_id"];
-    $commment = $_POST["comment"];
-
+if($data->user_id && $data->post_id  && $data->commment ){
+    $user_id = $data->user_id;
+    $post_id = $data->post_id;
+    $commment = $data->commment;
 
 }else{
      $response = [];

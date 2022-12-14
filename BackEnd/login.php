@@ -2,25 +2,34 @@
 
 include("connection.php");
 
-if(isset($_POST["user_id"]) && $_POST["user_id"] != "" && isset($_POST["image_URL"]) && $_POST["image_URL"] != "" ){
-    $user_id = $_POST["user_id"];
-    $image_URL = $_POST["image_URL"];
+$data = json_decode(file_get_contents('php://input', true));
 
+if($data->username && $data->password  ){
+    $username = $data->username;
+    $password = $data->password;
 }else{
-    $response = [];
-    $response["success"] = false;   
-    echo json_encode($response);
-    return;  
-}
+     $response = [];
+     $response["success"] = "z";   
+     echo json_encode($response);
+     return; 
+ }
 
 
-$query = $mysqli->prepare("INSERT INTO Images(image_URL, user_id) VALUES(?, ?)");
-$query->bind_param("si",$image_URL, $user_id);
+$query = $mysqli->prepare("Select * from users WHERE username = ? && password=?");
+$query->bind_param("ss", $username, $password);
 $query->execute();
 
+$array = $query->get_result();
 $response = [];
-$response["success"] = "true";
+while($credentials = $array->fetch_assoc()){
+    $response[] = $credentials;
+}
+if(!$response ){ //list is empty
+    $response["success"] = "User_does_not_exist";        
+}
+else{
+    $response["success"] = "true";   
+
+}
 echo json_encode($response);
-
-
 
