@@ -32,5 +32,24 @@ export class ApisService {
     return response;
   }
 
+  createAcc(username: string, password:string, fname:string, lname:string){
+    const headers: HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
+
+    const options={
+      headers: headers
+    }
+
+
+    const body = {
+      "username": username,
+      "fname": fname,
+      "lname": lname,
+      "password": password,
+    }
+
+    const response = this.http.post( this.base_url + "register.php",JSON.stringify(body) ,options);
+    return response;
+  }
+
 
 }
