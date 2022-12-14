@@ -14,18 +14,20 @@
 
       <ion-item>
         <ion-label position="stacked">Username</ion-label>
-        <ion-input type="text" placeholder="Enter username"></ion-input>
+        <ion-input type="text" placeholder="Enter username" [(ngModel)]="username"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Password</ion-label>
-        <ion-input type="password" placeholder="Enter password"></ion-input>
+        <ion-input type="password" placeholder="Enter password" [(ngModel)]="password"></ion-input>
       </ion-item>
-
-      <ion-button class="button-login" (click)="login()">Login</ion-button>
       <ion-item>
+        <ion-label position="stacked" color="danger">{{check_fields}}</ion-label>
+        <ion-button class="button-login" (click)="login()">Login</ion-button>
         <p class="text">If youd dont have an account please <ion-button fill="clear" (click)="goRegister()">Sign
             up</ion-button></p>
       </ion-item>
+
+
     </ion-list>
 
   </ion-card>

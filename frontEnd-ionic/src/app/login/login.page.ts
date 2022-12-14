@@ -8,16 +8,30 @@ import { ApisService } from '../apis/apis.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  commentTest='';
-
+  username = '';
+  password = '';
+  check_fields = '';
   constructor(private apiService:ApisService, private router:Router) {}
     login() {  
-      this.apiService.login("test1", "test1").subscribe((response: any) => {
-      this.commentTest = response;
-      console.log(this.commentTest);
-     });
+      // const name = this.username.replace(/\s/g, '');
+      // const name = this.username.replace(/\s/g, '');
+      if(this.username=='' || this.password==''){
+        this.check_fields = "Please fill all the fields"
+      }
+      else{
+        this.apiService.login(this.username, this.password).subscribe((response: any) => {
+          if(response.success == "true"){
+            this.router.navigate(['tabs/tab1']);
+          }
+          else{
+            this.check_fields = "Username or password is incorrect"
+          }
 
-        this.router.navigate(['tabs/tab1']);
+    
+        });
+      }
+
+//
     }
 
     goRegister() {  
