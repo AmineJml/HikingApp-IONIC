@@ -2,13 +2,14 @@
 
 include("connection.php");
 //username can be changed
-//fname, lname, password
-if(isset($_POST["user_id"]) && $_POST["user_id"] != "" && isset($_POST[""]) && $_POST["username"] != "" && isset($_POST["fname"]) && $_POST["fname"] != "" && isset($_POST["lname"]) && $_POST["lname"] != "" && isset($_POST["password"]) && $_POST["password"] != ""  ){
-    $user_id = $_POST["user_id"];
-    $username = $_POST["username"];
-    $fname = $_POST["fname"];
-    $lname = $_POST["lname"];
-    $password = $_POST["password"];
+$data = json_decode(file_get_contents('php://input', true));
+
+if($data->user_id && $data->username  && $data->fname  && $data->lname  && $data->password  ){
+    $user_id = $data->user_id;
+    $username = $data->username;
+    $fname = $data->fname;
+    $lname = $data->lname;
+    $password = $data->password;
 }
 else{
     $response = [];
