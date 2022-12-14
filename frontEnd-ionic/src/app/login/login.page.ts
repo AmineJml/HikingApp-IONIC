@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';  
+import { ApisService } from '../apis/apis.service';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +8,9 @@ import { Router } from '@angular/router';  
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  commentTest='';
 
-    constructor(private router: Router) {}  
+  constructor(private apiService:ApisService, private router:Router) {}
     goTab1() {  
         this.router.navigate(['tabs/tab1']);
     }
@@ -17,6 +19,12 @@ export class LoginPage implements OnInit {
           this.router.navigate(['/register']);
       }
   ngOnInit() {
+    this.apiService.login("test1", "test1").subscribe((response: any) => {
+
+      this.commentTest = response;
+      console.log(this.commentTest);
+
+   });  
   }
 
 }
