@@ -7,7 +7,13 @@ import { Router } from '@angular/router';  
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+    fname ='';
+    lname ='';
+    username='';
+    password='';
+    passwordConf='';
 
+    register_status='';
     constructor(private router: Router) {}  
     goTab1() {  
         this.router.navigate(['login']);
