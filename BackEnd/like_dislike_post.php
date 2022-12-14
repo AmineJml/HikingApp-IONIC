@@ -2,12 +2,12 @@
 
 include("connection.php");
 
-if(isset($_POST["user_id"]) && $_POST["user_id"] != "" && isset($_POST["post_id"]) && $_POST["post_id"] != "" && isset($_POST["like_status"]) && $_POST["like_status"] != "" ){
-    $User_id = $_POST["user_id"];
-    $post_id = $_POST["post_id"];
-    $like_status = $_POST["like_status"];
+$data = json_decode(file_get_contents('php://input', true));
 
-
+if($data->user_id && $data->post_id  && $data->is_liked  ){
+    $user_id = $data->user_id;
+    $post_id = $data->post_id;
+    $is_liked = $data->is_liked;
 }else{
      $response = [];
      $response["success"] = false;   
@@ -15,12 +15,12 @@ if(isset($_POST["user_id"]) && $_POST["user_id"] != "" && isset($_POST["post_id"
      return; 
  }
 
-    $query = $mysqli->prepare("INSERT INTO likes( User_id, Image_id, Is_liked) VALUES ( ?, ?, ?)");
-    $query->bind_param("iio", $User_id, $Image_id, $like_status);
-    $query->execute();
+$query = $mysqli->prepare("INSERT INTO likes( user_id, post_id, is_liked) VALUES ( ?, ?, ?)");
+$query->bind_param("iio", $user_id, $Image_id, $is_liked);
+$query->execute();
 
-    $response["succes"] = "success";
-    echo json_encode($response);
+$response["succes"] = "success";
+echo json_encode($response);
  
 
 
