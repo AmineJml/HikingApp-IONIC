@@ -11,9 +11,18 @@ export class ApisService {
 
   constructor( private http: HttpClient) {}
   
-  get_comments(): Observable<any>{
-    return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_comments.php?post_id=1');
+  get_post_id(post_id:any): Observable<any>{
+    return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_post_id.php?post_id=' + post_id);
   }
+  get_username(user_id:any): Observable<any>{
+    return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_comments.php?user_id=' + user_id);
+  }
+  // get_comments(post_id:any): Observable<any>{
+  //   return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_comments.php?post_id=' + post_id);
+  // }
+  // get_comments(post_id:any): Observable<any>{
+  //   return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_comments.php?post_id=' + post_id);
+  // }
 
   getPosts(): Observable<any>{
     return this.http.get<any>(this.base_url + "/get_posts.php");
