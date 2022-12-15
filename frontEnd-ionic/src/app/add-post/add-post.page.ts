@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';  
+import { ApisService } from '../apis/apis.service';
 
 @Component({
   selector: 'app-add-post',
@@ -7,9 +8,33 @@ import { Router } from '@angular/router';  
   styleUrls: ['./add-post.page.scss'],
 })
 export class AddPostPage implements OnInit {
+    username:any ='';
+    user_id =localStorage.getItem('user_id');
+    title = '';
+    image_URL = '';
+    description = '';
+    addPost_status = '';
 
-    constructor(private router: Router) {}  
-    goTab1() {  
+    constructor(private apiService:ApisService, private router:Router) {}
+
+    async addPost(){
+      if(localStorage.getItem('user_id')=='' || this.image_URL=='' || this.title =='' || this.description==''){
+        this.addPost_status = "Please fill all the fields";
+      }
+
+      //===============HERE===========================
+      else{   
+        this.apiService.addPost(localStorage.getItem('user_id'), this.title, this.image_URL, this.description).subscribe((response: any) => {
+        if(response.success = true){
+          this.addPost_status = "Post added succesfully"
+        }
+        });
+        
+
+      }
+    }
+
+     goTab1() {  
         this.router.navigate(['tabs/tab1']);
     }
     goTab2() {  
@@ -21,6 +46,8 @@ export class AddPostPage implements OnInit {
     }
   
    ngOnInit() {
+    this.username =localStorage.getItem('username');
+
    }
 
 }

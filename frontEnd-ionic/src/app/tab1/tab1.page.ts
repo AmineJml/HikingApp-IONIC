@@ -8,40 +8,44 @@ import { ApisService } from '../apis/apis.service';
 })
 export class Tab1Page {
 
-  constructor(private apiService:ApisService, private router:Router) {}
-    image ='';
-  name = '';
-  commentTest='';
+  data : {username: any, title: any, description: any, image_URL: any, post_id: any}[]=[];
 
-  gender = '';
-  age = '';
-  nationality = '';
+  constructor(private apiService:ApisService, private router:Router) {
+    
+  }
+    // image ='';
+    // name = '';
+    // commentTest='';
 
-  title = "BATA";
-    go() {
+    // gender = '';
+    // age = '';
+    // nationality = '';
+
+    // title = "BATA";
+
+   goAddPost() {
     this.router.navigate(['add-post']);
   }
-  goPostView(){
+  goPostView(post_id: any){
+    localStorage.setItem("post_id", post_id);
+    localStorage.setItem("image_URL", post_id);
+    localStorage.setItem("title", post_id);
+    localStorage.setItem("description", post_id);
+    localStorage.setItem("post_user_id", post_id);
+
     this.router.navigate(['post-view']);
 
   }
   ngOnInit() { //on start (same as onCreate)
-    this.apiService.get_comments().subscribe((response: any) => {
 
-      this.commentTest = response[0].comment;
-      console.log(this.commentTest);
 
-  });
+  
+  this.apiService.getPosts().subscribe((response: any) => {
+    this.data = response;
+    console.log(this.data)
+});
 
   }
 //================================================================
-  pressMe()
-  {
-  //add const because its not public
-    const name = this.name.replace(/\s/g, '');
-    this.apiService.get_comments().subscribe((response: any) => {
-      this.commentTest = response.comment;
-    });
-  }
 
 }

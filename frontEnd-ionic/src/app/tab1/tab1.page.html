@@ -7,27 +7,30 @@
 </ion-header>
 
 
-<ion-content class="tabs">
+<ion-content [fullscreen]="true" class="tabs">
 
-  <ion-card>
-    <img class="card_img" alt="Silhouette of mountains"
-      src="https://ionicframework.com/docs/img/demos/card-media.png" />
+  <ion-card *ngFor="let post of data">
+    <div class="img-container">
+      <img class="card_img" src={{post.image_URL}} />
+    </div>
     <ion-card-header>
-      <ion-card-title>{{commentTest}}</ion-card-title>
-      <ion-card-subtitle>Location</ion-card-subtitle>
+      <ion-card-title>{{post.title}}</ion-card-title>
+      <ion-card-title>{{post.username}}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      more infor about the trip <br>
-      Google maps location: <br>
+      {{post.description}}
     </ion-card-content>
-    <ion-button fill="clear" (click)="goPostView()">Find out more</ion-button>
+    <div class="btn-container">
+      <ion-button class="btn" fill="clear" (click)="goPostView(post.post_id)">Find out more</ion-button>
+    </div>
+
   </ion-card>
 
 </ion-content>
 
 <ion-fab slot="fixed" vertical="bottom" horizontal="end">
   <ion-fab-button>
-    <ion-icon name="add" (click)="go()"></ion-icon>
+    <ion-icon name="add" (click)="goAddPost()"></ion-icon>
   </ion-fab-button>
 </ion-fab>

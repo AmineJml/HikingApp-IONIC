@@ -3,7 +3,7 @@
 include("connection.php");
 $data = json_decode(file_get_contents('php://input', true));
 
-if($data->user_id && $data->username  && $data->fname  && $data->lname  && $data->password  ){
+if( $data->username  && $data->fname  && $data->lname  && $data->password  ){
     $username = $data->username;
     $fname = $data->fname;
     $lname = $data->lname;
@@ -39,6 +39,6 @@ else{
     $query = $mysqli->prepare("INSERT INTO users( fname, lname, username, password) VALUES ( ?, ?, ?, ?)");
     $query->bind_param("ssss", $fname, $lname, $username, $password);
     $query->execute();
-    $response["success"] = true;
+    $response["success"] = "true";
     echo json_encode($response);
 }

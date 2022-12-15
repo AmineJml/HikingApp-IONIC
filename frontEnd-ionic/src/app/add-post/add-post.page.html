@@ -9,51 +9,46 @@
 <ion-content>
 
   <ion-card class="card">
-
     <ion-card-header>
-      <ion-card-title>Username of the logged in user</ion-card-title>
+      <ion-card-title>{{username}}</ion-card-title>
     </ion-card-header>
     <ion-list>
       <ion-item>
-        <ion-label position="stacked">Location</ion-label>
-        <ion-input placeholder="Enter text"></ion-input>
-      </ion-item>
-
-
-
-      <ion-item>
-        <ion-label position="stacked">Google maps location</ion-label>
-        <ion-input placeholder="Optional"></ion-input>
+        <ion-label position="stacked">Title</ion-label>
+        <ion-input placeholder="Enter text" [(ngModel)]="title"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Image online Url</ion-label>
-        <ion-input type="text" placeholder="Please insert a valid link"></ion-input>
+        <ion-input type="text" placeholder="Please insert a valid link" [(ngModel)]="image_URL"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Description</ion-label>
-        <ion-textarea placeholder="Type something here" [autoGrow]="true"></ion-textarea>
+        <ion-textarea placeholder="Type something here" [autoGrow]="true" [(ngModel)]="description"></ion-textarea>
       </ion-item>
-    </ion-list></ion-card>
+      <ion-label position="stacked" color="success">{{addPost_status}}</ion-label>
+      <div class="btn-container">
+        <ion-button class="btn" (click)="addPost()">Add</ion-button>
+      </div>
 
+
+    </ion-list>
+  </ion-card>
 </ion-content>
 
-<ion-tabs>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1" (click)="goTab1()">
-      <ion-icon name="home-outline"></ion-icon>
-      <ion-label>Home</ion-label>
-    </ion-tab-button>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="tab1" (click)="goTab1()">
+    <ion-icon name="home-outline"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
 
-    <ion-tab-button tab="tab2" (click)="goTab2()">
-      <ion-icon name="body-outline"></ion-icon>
-      <ion-label>My page</ion-label>
-    </ion-tab-button>
+  <ion-tab-button tab="tab2" (click)="goTab2()">
+    <ion-icon name="body-outline"></ion-icon>
+    <ion-label>My page</ion-label>
+  </ion-tab-button>
 
-    <ion-tab-button tab="tab3" (click)="goTab3()">
-      <ion-icon name="compass-outline"></ion-icon>
-      <ion-label>Maps</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-
-</ion-tabs>
+  <ion-tab-button tab="tab3" (click)="goTab3()">
+    <ion-icon name="compass-outline"></ion-icon>
+    <ion-label>Maps</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>

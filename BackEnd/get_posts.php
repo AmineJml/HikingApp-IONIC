@@ -2,7 +2,7 @@
 
 include("connection.php");
 
-$query = $mysqli->prepare("Select image_URL, description, user_id from posts  ");
+$query = $mysqli->prepare("Select image_URL, description, user_id, post_id, title from posts  ");
 $query->execute();
     //select all users normally
 $array = $query->get_result();
@@ -17,14 +17,5 @@ while($accounts = $array->fetch_assoc()){
 echo json_encode($responses);
 
 
-//select all users normally without blocks
 
-// $query = $mysqli->prepare("Select User_id, Image_URL, Image_id from images ");
-// $query->execute();
-// $array = $query->get_result();
-// $response = [];
-// while($images = $array->fetch_assoc()){
-//     $response[] = $images;
-// }
-// echo json_encode($response);
 

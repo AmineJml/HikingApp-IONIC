@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Login
+      Sign up
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,36 +13,36 @@
     <ion-list>
 
       <ion-card-header>
-        <ion-card-title>Username of the logged in user</ion-card-title>
+        <ion-card-title>Create account</ion-card-title>
       </ion-card-header>
       <ion-list>
         <ion-item>
           <ion-label position="stacked">First name</ion-label>
-          <ion-input placeholder="Enter text"></ion-input>
+          <ion-input placeholder="Enter text" [(ngModel)]="fname"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Last name</ion-label>
-          <ion-input placeholder="Enter text"></ion-input>
+          <ion-input placeholder="Enter text" [(ngModel)]="lname"> </ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">email</ion-label>
-          <ion-input type="text" placeholder="Please insert a valid email"></ion-input>
+          <ion-label position="stacked">username</ion-label>
+          <ion-input type="text" placeholder="Please insert a valid email" [(ngModel)]="username"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Password</ion-label>
-          <ion-input type="email" placeholder="Please enter the new password"></ion-input>
+          <ion-input type='password' placeholder="Please enter the new password" [(ngModel)]="password"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Password confirmation</ion-label>
-          <ion-input type="text" placeholder="Please enter the same passord"></ion-input>
+          <ion-input type='password' placeholder="Please enter the same passord" [(ngModel)]="passwordConf"></ion-input>
+          <ion-label position="stacked" color="danger">{{register_status}}</ion-label>
+          <ion-button class="button-login" (click)="register()">Sign up</ion-button>
+
         </ion-item>
 
-        <ion-item>
-          <ion-label position="stacked">Correct input status</ion-label>
-        </ion-item>
       </ion-list>
 
-      <ion-button class="button-login">Sign up</ion-button>
+
       <ion-item>
         <p class="text">Already have an account? <ion-button fill="clear" (click)="goTab1()">Login</ion-button></p>
       </ion-item>

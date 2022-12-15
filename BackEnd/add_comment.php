@@ -10,7 +10,7 @@ if($data->user_id && $data->post_id  && $data->commment ){
 
 }else{
      $response = [];
-     $response["success"] = false;   
+     $response["success"] = "false";   
      echo json_encode($response);
      return; 
  }

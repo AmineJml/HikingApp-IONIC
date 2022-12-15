@@ -2,17 +2,17 @@
 
 include("connection.php");
 
-if(isset($_GET["user_id"]) ){
-    $user_id = $_GET["user_id"];
+if(isset($_GET["post_id"]) ){
+    $post_id = $_GET["post_id"];
 }else{
     $response = [];
     $response["success"] = false;   
     echo json_encode($response);
     return;  
 }
-
-$query = $mysqli->prepare("SELECT image_URL, description, user_id FROM posts WHERE user_id = ?");
-$query->bind_param("i", $user_id);
+       
+$query = $mysqli->prepare("SELECT image_URL, description, user_id, title FROM posts WHERE post_id = ?");
+$query->bind_param("i", $post_id);
 $query->execute();
 
 $array = $query->get_result();
@@ -22,7 +22,7 @@ while($posts = $array->fetch_assoc()){
 }
 
 if(!$response ){ //list is empty
-    $response["success"] = "no_posts_by_this_user";   
+    $response["success"] = "no_post_with_this_id";   
 }
 
 echo json_encode($response);
