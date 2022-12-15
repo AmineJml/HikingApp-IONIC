@@ -11,16 +11,21 @@ export class ApisService {
 
   constructor( private http: HttpClient) {}
   
-  get_post_id(post_id:any): Observable<any>{
+  getPostId(post_id:any): Observable<any>{
     return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_post_id.php?post_id=' + post_id);
   }
-  get_username(user_id:any): Observable<any>{
-    return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_comments.php?user_id=' + user_id);
+  getUsername(user_id:any): Observable<any>{
+    return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_username.php?user_id=' + user_id);
   }
-  // get_comments(post_id:any): Observable<any>{
+
+  getComments(post_id:any): Observable<any>{
+    return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_comments.php?post_id=' + post_id);
+  }
+
+  // get_like_count(post_id:any, user_id:any): Observable<any>{
   //   return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_comments.php?post_id=' + post_id);
   // }
-  // get_comments(post_id:any): Observable<any>{
+  // get_like_user(post_id:any): Observable<any>{
   //   return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_comments.php?post_id=' + post_id);
   // }
 

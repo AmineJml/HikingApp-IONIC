@@ -28,7 +28,6 @@ export class Tab1Page {
   }
   goPostView(post_id: any){
     localStorage.setItem("post_id", post_id);
-    console.log("HERERERERE" + localStorage.getItem('post_id'));
     this.router.navigate(['post-view']);
 
   }

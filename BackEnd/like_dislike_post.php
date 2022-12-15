@@ -15,12 +15,19 @@ if($data->user_id && $data->post_id  && $data->is_liked  ){
      return; 
  }
 
-$query = $mysqli->prepare("INSERT INTO likes( user_id, post_id, is_liked) VALUES ( ?, ?, ?)");
-$query->bind_param("iio", $user_id, $Image_id, $is_liked);
+$query = $mysqli->prepare("UPDATE likes SET is_liked=? WHERE user_id=?, post_id=?");
+$query->bind_param("iii", $user_id, $post_id, $is_liked);
 $query->execute();
 
-$response["succes"] = "success";
+$response = [];
+$response["response"] = "true";
+
 echo json_encode($response);
+    
+    
+
+
+
  
 
 
