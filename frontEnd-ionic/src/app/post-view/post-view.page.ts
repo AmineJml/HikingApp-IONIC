@@ -10,6 +10,10 @@ import { ApisService } from '../apis/apis.service';
 export class PostViewPage implements OnInit {
     likes='';
     post_id = '';
+    title = '';
+    username ='';
+    description = '';
+
     //dataComment : {username: any, title: any, description: any, image_URL: any, post_id: any}[]=[];
     dataComment : {comment: any}[]=[];
 
@@ -31,6 +35,11 @@ export class PostViewPage implements OnInit {
         this.dataComment = response;
         console.log(this.dataComment)        
       });
+      this.username = "AAAAAASDASDSAD"
+      this.title = "AAAAAASDASDSAD"
+      this.description = "AAAAAASDASDSAD"
+
+
     
     }
 }
