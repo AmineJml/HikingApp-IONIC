@@ -8,7 +8,7 @@ import { ApisService } from '../apis/apis.service';
   styleUrls: ['./add-post.page.scss'],
 })
 export class AddPostPage implements OnInit {
-    username =localStorage.getItem('username');
+    username:any ='';
     user_id =localStorage.getItem('user_id');
     title = '';
     image_URL = '';
@@ -46,6 +46,8 @@ export class AddPostPage implements OnInit {
     }
   
    ngOnInit() {
+    this.username =localStorage.getItem('username');
+
    }
 
 }

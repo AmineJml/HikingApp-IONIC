@@ -108,4 +108,23 @@ export class ApisService {
     return response;
   }
 
+  addComment(user_id:any, title:string, image_URL:string, description:string){
+    const headers: HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
+
+    const options={
+      headers: headers
+    }
+
+
+    const body = {
+      "user_id": user_id,
+      "title": title,
+      "image_URL": image_URL,
+      "description": description,
+    }
+
+    const response = this.http.post( this.base_url + "add_post.php",JSON.stringify(body) ,options);
+    return response;
+  }
+
 }

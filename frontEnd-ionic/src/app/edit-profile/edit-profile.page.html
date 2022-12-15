@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-title>
-            New post
+            Edit profile
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -11,7 +11,7 @@
     <ion-card class="card">
 
         <ion-card-header>
-            <ion-card-title>Username of the logged in user</ion-card-title>
+            <ion-card-title>{{usernameStat}}</ion-card-title>
         </ion-card-header>
         <ion-list>
             <ion-item>
@@ -28,11 +28,12 @@
             </ion-item>
             <ion-item>
                 <ion-label position="stacked">Password</ion-label>
-                <ion-input type="email" placeholder="Please enter the new password" [(ngModel)]="password"></ion-input>
+                <ion-input type="password" placeholder="Please enter the new password"
+                    [(ngModel)]="password"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="stacked">Password confirmation</ion-label>
-                <ion-input type="text" placeholder="Please enter the same passord"
+                <ion-input type="password" placeholder="Please enter the same passord"
                     [(ngModel)]="passwordConf"></ion-input>
             </ion-item>
 

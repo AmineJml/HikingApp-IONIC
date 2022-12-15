@@ -15,7 +15,7 @@ export class EditProfilePage implements OnInit {
     username='';
     password='';
     passwordConf='';
-
+    usernameStat:any = '';
     editProf_status = '';
 
 
@@ -38,7 +38,6 @@ export class EditProfilePage implements OnInit {
           this.editProf_status = "Account created";
           // this.storage.set('username', this.username)
         }
-        this.editProf_status = "User already exist";
 
       });
 
@@ -57,6 +56,7 @@ export class EditProfilePage implements OnInit {
     }
   
    ngOnInit() {
+    this.usernameStat = localStorage.getItem('username')
    }
 
 
