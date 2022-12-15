@@ -22,8 +22,12 @@
       Google maps location: <br>
     </ion-card-content>
     <ion-button fill="clear" color="danger">Like {{likes}}</ion-button>
-
+    <ion-item>
+      <ion-label position="stacked">Add comment</ion-label>
+      <ion-input type="email" placeholder="Insert new comment here"></ion-input>
+    </ion-item>
   </ion-card>
+
   <ion-list [inset]="true">
     <ion-label color="success"> Comments </ion-label>
 
