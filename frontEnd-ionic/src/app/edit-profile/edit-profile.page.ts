@@ -8,7 +8,6 @@ import { ApisService } from '../apis/apis.service';
   styleUrls: ['./edit-profile.page.scss'],
 })
 export class EditProfilePage implements OnInit {
-  editProf_status = '';
   constructor(private apiService:ApisService, private router:Router) {}
     user_id = localStorage.getItem('user_id');
     fname ='';
@@ -16,6 +15,9 @@ export class EditProfilePage implements OnInit {
     username='';
     password='';
     passwordConf='';
+
+    editProf_status = '';
+
 
     editProfile(){
     if(this.username=='' || this.password=='' || this.fname =='' || this.lname=='' || this.passwordConf==''){
@@ -27,20 +29,20 @@ export class EditProfilePage implements OnInit {
       this.editProf_status = "Password and password confirmation do not match";
     }
     //===============HERE===========================
-    // else{
+    else{
       
-    //   this.apiService.editProfile(1, this.username, this.password, this.fname, this.lname).subscribe((response: any) => {
-    //     console.log(response.success)
+      this.apiService.editProfile(localStorage.getItem('user_id'), this.username, this.password, this.fname, this.lname).subscribe((response: any) => {
+        console.log(response.success)
 
-    //     if(response.success != "user_already_exit"){
-    //       this.editProf_status = "Account created";
-    //       // this.storage.set('username', this.username)
-    //     }
-    //     this.editProf_status = "User already exist";
+        if(response.success != "user_already_exit"){
+          this.editProf_status = "Account created";
+          // this.storage.set('username', this.username)
+        }
+        this.editProf_status = "User already exist";
 
-    //   });
+      });
 
-    // }
+    }
   }
 
     goTab1() {  

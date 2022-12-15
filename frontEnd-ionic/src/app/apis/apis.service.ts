@@ -51,7 +51,7 @@ export class ApisService {
     return response;
   }
 
-  editProfile(user_id:number, username: string, password:string, fname:string, lname:string){
+  editProfile(user_id:any, username: string, password:string, fname:string, lname:string){
     const headers: HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
     const options={
