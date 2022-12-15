@@ -21,7 +21,7 @@
       more infor about the trip <br>
       Google maps location: <br>
     </ion-card-content>
-    <ion-button fill="clear" color="danger">Like +{{likes</ion-button>
+    <ion-button fill="clear" color="danger">Like {{likes}}</ion-button>
 
   </ion-card>
   <ion-list [inset]="true">
@@ -38,22 +38,20 @@
   </ion-list>
 </ion-content>
 
-<ion-tabs>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1" (click)="goTab1()">
-      <ion-icon name="home-outline"></ion-icon>
-      <ion-label>Home</ion-label>
-    </ion-tab-button>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="tab1" (click)="goTab1()">
+    <ion-icon name="home-outline"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
 
-    <ion-tab-button tab="tab2" (click)="goTab2()">
-      <ion-icon name="body-outline"></ion-icon>
-      <ion-label>My page</ion-label>
-    </ion-tab-button>
+  <ion-tab-button tab="tab2" (click)="goTab2()">
+    <ion-icon name="body-outline"></ion-icon>
+    <ion-label>My page</ion-label>
+  </ion-tab-button>
 
-    <ion-tab-button tab="tab3" (click)="goTab3()">
-      <ion-icon name="compass-outline"></ion-icon>
-      <ion-label>Maps</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+  <ion-tab-button tab="tab3" (click)="goTab3()">
+    <ion-icon name="compass-outline"></ion-icon>
+    <ion-label>Maps</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>

@@ -24,16 +24,12 @@ export class AddPostPage implements OnInit {
 
       //===============HERE===========================
       else{   
-        this.apiService.addPost(1, "this.title"," this.image_URL", "this.description").subscribe((response: any) => {
-          console.log("AAA" + response.success)
-
-          // if(response.success != "user_already_exit"){
-          //   this.addPost_status = "Account created";
-          //   // this.storage.set('username', this.username)
-          // }
-          // this.addPost_status = "User already exist";
-
+        this.apiService.addPost(localStorage.getItem('user_id'), this.title, this.image_URL, this.description).subscribe((response: any) => {
+        if(response.success = true){
+          this.addPost_status = "Post added succesfully"
+        }
         });
+        
 
       }
     }

@@ -15,6 +15,10 @@ export class ApisService {
     return this.http.get<any>('https://localhost/hikingApp/BackEnd/get_comments.php?post_id=1');
   }
 
+  getPosts(): Observable<any>{
+    return this.http.get<any>(this.base_url + "/get_posts.php");
+  }
+
   login(username: string, password:string){
     const headers: HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
@@ -71,7 +75,7 @@ export class ApisService {
     return response;
   }
 
-  addPost(user_id:number, title:string, image_URL:string, description:string){
+  addPost(user_id:any, title:string, image_URL:string, description:string){
     const headers: HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
     const options={

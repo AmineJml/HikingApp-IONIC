@@ -7,7 +7,7 @@ import { Router } from '@angular/router';  
   styleUrls: ['./post-view.page.scss'],
 })
 export class PostViewPage implements OnInit {
-
+    likes='';
     constructor(private router: Router) {}  
     goTab1() {  
         this.router.navigate(['tabs/tab1']);

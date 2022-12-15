@@ -8,17 +8,23 @@ import { ApisService } from '../apis/apis.service';
 })
 export class Tab1Page {
 
-  constructor(private apiService:ApisService, private router:Router) {}
-    image ='';
-  name = '';
-  commentTest='';
+  data : {username: any, title: any, description: any, image_URL: any, post_id: any}[]=[];
 
-  gender = '';
-  age = '';
-  nationality = '';
+  constructor(private apiService:ApisService, private router:Router) {
+    
+  }
+    // image ='';
+    // name = '';
+    // commentTest='';
 
-  title = "BATA";
-    go() {
+    // gender = '';
+    // age = '';
+    // nationality = '';
+
+    // title = "BATA";
+
+
+   goAddPost() {
     this.router.navigate(['add-post']);
   }
   goPostView(){
@@ -26,24 +32,14 @@ export class Tab1Page {
 
   }
   ngOnInit() { //on start (same as onCreate)
-    console.log(localStorage.getItem('username'))   
 
-    this.apiService.get_comments().subscribe((response: any) => {
 
-      this.commentTest = response[0].comment;
-      console.log(this.commentTest);
-
-  });
+  
+  this.apiService.getPosts().subscribe((response: any) => {
+    this.data = response;
+});
 
   }
 //================================================================
-  pressMe()
-  {
-  //add const because its not public
-    const name = this.name.replace(/\s/g, '');
-    this.apiService.get_comments().subscribe((response: any) => {
-      this.commentTest = response.comment;
-    });
-  }
 
 }
