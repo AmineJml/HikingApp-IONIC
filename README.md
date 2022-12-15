@@ -1,4 +1,4 @@
-## HikingApp 🕊
+## HikingApp 
 This project is done by  Amine Jamal </br>
 Amine Jamal repo: [Click Here](https://github.com/AmineJml/GroupProject-Mobile)
 
