@@ -38,6 +38,7 @@ export class Tab1Page {
   
   this.apiService.getPosts().subscribe((response: any) => {
     this.data = response;
+    console.log(this.data)
 });
 
   }
