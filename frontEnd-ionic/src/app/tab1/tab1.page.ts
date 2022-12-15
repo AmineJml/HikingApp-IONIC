@@ -23,11 +23,12 @@ export class Tab1Page {
 
     // title = "BATA";
 
-
    goAddPost() {
     this.router.navigate(['add-post']);
   }
-  goPostView(){
+  goPostView(post_id: any){
+    localStorage.setItem("post_id", post_id);
+    console.log("HERERERERE" + localStorage.getItem('post_id'));
     this.router.navigate(['post-view']);
 
   }
