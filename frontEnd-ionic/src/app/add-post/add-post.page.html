@@ -9,7 +9,6 @@
 <ion-content>
 
   <ion-card class="card">
-
     <ion-card-header>
       <ion-card-title>{{username}}</ion-card-title>
     </ion-card-header>
@@ -27,7 +26,10 @@
         <ion-textarea placeholder="Type something here" [autoGrow]="true" [(ngModel)]="description"></ion-textarea>
       </ion-item>
       <ion-label position="stacked" color="success">{{addPost_status}}</ion-label>
-      <ion-button class="button-login" (click)="addPost()">Add</ion-button>
+      <div class="btn-container">
+        <ion-button class="btn" (click)="addPost()">Add</ion-button>
+      </div>
+
 
     </ion-list>
   </ion-card>
