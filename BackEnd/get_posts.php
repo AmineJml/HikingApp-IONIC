@@ -2,7 +2,7 @@
 
 include("connection.php");
 
-$query = $mysqli->prepare("Select image_URL, description, user_id from posts  ");
+$query = $mysqli->prepare("Select image_URL, description, user_id, title from posts  ");
 $query->execute();
     //select all users normally
 $array = $query->get_result();

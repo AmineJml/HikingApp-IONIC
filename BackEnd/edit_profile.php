@@ -33,7 +33,7 @@ while($accounts = $array->fetch_assoc()){
 }
 
 if($users){ //if list is not empty
-    $response["success"] = "user_already_exit";
+    $response["success"] = "username_already_exit";
     echo json_encode($response);
 }
 

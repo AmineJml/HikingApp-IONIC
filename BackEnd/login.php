@@ -9,12 +9,10 @@ if($data->username && $data->password  ){
     $password = $data->password;
 }else{
      $response = [];
-     $response["success"] = "z";   
+     $response["success"] = "false";   
      echo json_encode($response);
      return; 
  }
-
-
 $query = $mysqli->prepare("Select * from users WHERE username = ? && password=?");
 $query->bind_param("ss", $username, $password);
 $query->execute();

@@ -51,5 +51,43 @@ export class ApisService {
     return response;
   }
 
+  editProfile(user_id:number, username: string, password:string, fname:string, lname:string){
+    const headers: HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
+
+    const options={
+      headers: headers
+    }
+
+
+    const body = {
+      "user_id": user_id,
+      "username": username,
+      "fname": fname,
+      "lname": lname,
+      "password": password,
+    }
+
+    const response = this.http.post( this.base_url + "register.php",JSON.stringify(body) ,options);
+    return response;
+  }
+
+  addPost(user_id:number, title:string, image_URL:string, description:string){
+    const headers: HttpHeaders = new HttpHeaders({'Content-Type':'application/json'});
+
+    const options={
+      headers: headers
+    }
+
+
+    const body = {
+      "user_id": user_id,
+      "title": title,
+      "image_URL": image_URL,
+      "description": description,
+    }
+
+    const response = this.http.post( this.base_url + "add_post.php",JSON.stringify(body) ,options);
+    return response;
+  }
 
 }

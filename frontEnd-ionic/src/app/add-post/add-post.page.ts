@@ -8,34 +8,30 @@ import { ApisService } from '../apis/apis.service';
   styleUrls: ['./add-post.page.scss'],
 })
 export class AddPostPage implements OnInit {
-    username ='';
-    location = '';
-    googleMaps = '';
+    username =localStorage.getItem('username');
+    user_id =localStorage.getItem('user_id');
+    title = '';
     image_URL = '';
     description = '';
+    addPost_status = '';
 
     constructor(private apiService:ApisService, private router:Router) {}
 
-    addPost(){
-      if(this.username=='' || this.password=='' || this.fname =='' || this.lname=='' || this.passwordConf==''){
-        this.register_status = "Please fill all the fields";
-        console.log(localStorage.getItem('test'))   
+    async addPost(){
+      if(localStorage.getItem('user_id')=='' || this.image_URL=='' || this.title =='' || this.description==''){
+        this.addPost_status = "Please fill all the fields";
       }
 
-      if(this.password != this.passwordConf){
-        this.register_status = "Password and password confirmation do not match";
-      }
       //===============HERE===========================
-      else{
-        
-        this.apiService.createAcc(this.username, this.password, this.fname, this.lname).subscribe((response: any) => {
-          console.log(response.success)
+      else{   
+        this.apiService.addPost(1, "this.title"," this.image_URL", "this.description").subscribe((response: any) => {
+          console.log("AAA" + response.success)
 
-          if(response.success != "user_already_exit"){
-            this.register_status = "Account created";
-            // this.storage.set('username', this.username)
-          }
-          this.register_status = "User already exist";
+          // if(response.success != "user_already_exit"){
+          //   this.addPost_status = "Account created";
+          //   // this.storage.set('username', this.username)
+          // }
+          // this.addPost_status = "User already exist";
 
         });
 

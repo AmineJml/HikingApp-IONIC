@@ -21,8 +21,6 @@ export class LoginPage implements OnInit {
       // const name = this.username.replace(/\s/g, '');
       if(this.username=='' || this.password==''){
         this.check_fields = "Please fill all the fields";
-        localStorage.setItem('test', "AAAAAAAAAA")   
-        console.log(localStorage.getItem('test'))   
       }
       else{
         
@@ -33,7 +31,6 @@ export class LoginPage implements OnInit {
             localStorage.setItem('lname', response[0].lname);
             localStorage.setItem('username', response[0].username);
 
-            console.log(localStorage.getItem('username'))   
             this.router.navigate(['tabs/tab1']);
           }
           else{
