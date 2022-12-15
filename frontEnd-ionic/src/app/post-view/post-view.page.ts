@@ -10,7 +10,9 @@ import { ApisService } from '../apis/apis.service';
 export class PostViewPage implements OnInit {
     likes='';
     post_id = '';
-    data='';
+    //dataComment : {username: any, title: any, description: any, image_URL: any, post_id: any}[]=[];
+    dataComment : {comment: any}[]=[];
+
     constructor(private apiService:ApisService, private router:Router) {}
     goTab1() {  
         this.router.navigate(['tabs/tab1']);
@@ -26,8 +28,9 @@ export class PostViewPage implements OnInit {
     
     ngOnInit() {
       this.apiService.getComments(localStorage.getItem('post_id')).subscribe((response: any) => {
-        this.data = response;
-        console.log(this.data)        });
+        this.dataComment = response;
+        console.log(this.dataComment)        
+      });
     
     }
 }
